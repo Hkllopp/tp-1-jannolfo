@@ -1,0 +1,42 @@
+## Exercice 1
+
+## Exercice 2
+
+### Manuel
+
+1. Selon le manuel (`man which`), la commande `which` permet de connaitre le chemin où sont stockés les fichiers liés à une commande donnée 
+2. Une fois dans la page du manuel, il suffit de faire `/option` pour rechercher le mot option dans la page
+3. Pour quitter le manuel, il suffit d'appuyer sur la touche `q`
+4. {{ pas de page. man 6 intro -> "jeux" }}
+
+### Navigation dans l’arborescence des fichiers
+
+1. La navigation jusqu'au dossier `/var/log` se fait avec la commande `cd /var/log`
+2. On peut accéder au dossier parent en tapant la commande `cd ../`
+3. On peut retourner sur le dossier personnel grâce à la commande `cd ~` ou `cd $HOME`
+4. Le retour au dossier /var se fait par le biais de la commande `cd /var`
+5. Le système nous retourne une erreur nous disant que nous n'avons pas les permissions nécessaires pour accéder au dossier /root à partir de la commande `cd /root`
+6. La commande `sudo cd /root` ne permet pas d'accéder au dossier /root en tant que super utilisateur car cd est une commande intégrée au shell et sudo permet l'exécution des commandes accessibles dans le dossier sbin
+7. Pour créer l'arborescence des fichiers demandées, on utilise les commandes `touch` (pour créer les fichiers) et `mkdir` (pour créer les dossiers)
+8. La commande `rm` permet de supprimer les fichiers (exemple: `rm Dossier1/Fichier1`), mais pas les dossiers 
+9. Grâce à l'option `-r`, on peut utiliser la commande `rm`̀ pour supprimer un dossier (et son contenu)
+10. Cela permet donc de supprimer le Dossier2 et son contenu, en une seule commande
+
+### Commandes importantes
+
+1.  On peut afficher l'heure avec la commande `date +%R`. La commande time quant à elle sert à calculer le temps d'exécution d'une commande passée en paramètre
+2.  Les fichiers commençant par un point sont les fichiers cachés par le système que l'on peut voir grâce à la commande `la`
+3.  Le programme ls se trouve dans `/bin/ls` que l'on trouve grâce à la commande `which ls`
+4.  La commande `ll` est un alias de la commande `ls -alF` qui permet d'afficher tous les fichiers y compris les fichiers cachés dans un format long c'est à dire avec les détails de ces fichiers.
+5.  La commande `ls /bin` permet d'afficher la listes des fichiers du dossier /bin
+6.  La commande `ls ..` permet de lister les fichiers du répertoire parent
+7.  La commande `pwd` permet d'afficher le répertoire courant complet
+8.  La commande `echo 'yo' > plop` permet d'écrire 'yo' et de stocker le résultat dans le fichier plop. L'exécution de cete commande une seconde fois va réécrire le fichier plop
+9.  La commande `echo 'yo' >> plop` permet d'aller écrire le mot 'yo' à la suite de la fichier plop avec un saut à la ligne
+10. La commande 'file' permet d'obtenir la type du fichier ainsi que son encodage sans tenir compte de l'extension mais bien du contenu de ce fichier
+11. Après avoir créé un lien titi vers le fichier toto, on constate que lorsque l'on modifie toto, titi est bien mis à jour. En revanche, lorsque l'on supprime toto, titi reste présent avec son contenu
+12. Les modifications se passent correctement comme pour la question précédente, en revanche avec l'option -s, le lien tutu vers titi est supprimé lorsque l'on supprime le fichier titi
+13. Lors de l'affichage d'un fichier très long comme `/var/log/syslog`, on peut interrompre le défilement avec CTRL+S et le reprendre avec CTRL+Q
+14. 
+
+
