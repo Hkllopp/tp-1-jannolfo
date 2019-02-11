@@ -35,8 +35,16 @@
 9.  La commande `echo 'yo' >> plop` permet d'aller écrire le mot 'yo' à la suite de la fichier plop avec un saut à la ligne
 10. La commande 'file' permet d'obtenir la type du fichier ainsi que son encodage sans tenir compte de l'extension mais bien du contenu de ce fichier
 11. Après avoir créé un lien titi vers le fichier toto, on constate que lorsque l'on modifie toto, titi est bien mis à jour. En revanche, lorsque l'on supprime toto, titi reste présent avec son contenu
-12. Les modifications se passent correctement comme pour la question précédente, en revanche avec l'option -s, le lien tutu vers titi est supprimé lorsque l'on supprime le fichier titi
+12. Les modifications se passent correctement comme pour la question précédente, en revanche avec l'option -s, le contneu tutu est supprimé lorsque l'on supprime le fichier titi
 13. Lors de l'affichage d'un fichier très long comme `/var/log/syslog`, on peut interrompre le défilement avec CTRL+S et le reprendre avec CTRL+Q
-14. 
+14. Pour les 5 première lignes : 'head -n 5 /var/log/syslog', les 15 dernières : 'tail -n 5 /var/log/syslog'. Lignes 10 à 20 : 'head -n 5 /var/log/syslog | tail -n 10'
+15. {{ dmesg | less }}
+16. Le fichier `/etc/passwd` contient les informations sur les utilisateurs (nom, uid, guid, home, type de bash, ...) {{ man ? }}
+17. {{ cat /etc/passwd | sort -r | cut -d ":" -f 1 }}
+
+
+
+
+
 
 
