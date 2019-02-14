@@ -1,55 +1,44 @@
 ## Exercice 1
 
+N/A
+
 ## Exercice 2
 
 ### Manuel
 
-1. Selon le manuel (`man which`), la commande `which` permet de connaitre le chemin où sont stockés les fichiers liés à une commande donnée 
-2. Une fois dans la page du manuel, il suffit de faire `/option` pour rechercher le mot option dans la page
-3. Pour quitter le manuel, il suffit d'appuyer sur la touche `q`
-4. {{ pas de page. man 6 intro -> "jeux" }}
+On accède au manual avec la commande `man`, suivie de la commande sur laquelle on veut des renseignements. En tapant `man which`, on apprend que la commande `which` permet de connaitre le chemin où sont stockés les fichiers liés à une commande donnée.
+Diverses options permettent de naviguer dans le manuel et d'y effectuer des actions variées. On peut par exemple rechercher un mot. Par exemple, il suffit de taper `/option` pour rechercher le mot option dans la page (toutes ses occurrences seront alors surlignées). Pour sortir du manuel, il suffit d'appuyer sur la touche `q`. Le manuel est divisé en plusieurs sections, permettant de regrouper les commandes par type. On peut voir à quoi correspond une section avec la commande `man {numéro} intro`. La section 6, par exemple, contient les commandes liées aux jeux et applications de divertissement de ce genre.
 
 ### Navigation dans l’arborescence des fichiers
 
-1. La navigation jusqu'au dossier `/var/log` se fait avec la commande `cd /var/log`
-2. On peut accéder au dossier parent en tapant la commande `cd ../`
-3. On peut retourner sur le dossier personnel grâce à la commande `cd ~` ou `cd $HOME`
-4. Le retour au dossier /var se fait par le biais de la commande `cd /var`
-5. Le système nous retourne une erreur nous disant que nous n'avons pas les permissions nécessaires pour accéder au dossier /root à partir de la commande `cd /root`
-6. La commande `sudo cd /root` ne permet pas d'accéder au dossier /root en tant que super utilisateur car cd est une commande intégrée au shell et sudo permet l'exécution des commandes accessibles dans le dossier sbin
-7. Pour créer l'arborescence des fichiers demandées, on utilise les commandes `touch` (pour créer les fichiers) et `mkdir` (pour créer les dossiers)
-8. La commande `rm` permet de supprimer les fichiers (exemple: `rm Dossier1/Fichier1`), mais pas les dossiers 
-9. Grâce à l'option `-r`, on peut utiliser la commande `rm`̀ pour supprimer un dossier (et son contenu)
-10. Cela permet donc de supprimer le Dossier2 et son contenu, en une seule commande
+Pour naviguer dans un dossier, il suffit d'utiliser la commande `cd` avec le chemin voulu comme argument. Par exemple, la navigation jusqu'au dossier `/var/log` se fait avec la commande `cd /var/log`. Si l'on souhaite accéder au dossier parent, il faut simplement remplacer le chemin par `../` dans la commande. On peut également retourner sur le dossier personnel grâce à la commande `cd ~` ou `cd $HOME`. De ce dossier, pour retourner au dossier `/var`, on réutilise la commande cd avec le chemin absolu`(cd /var`).
+
+L'accès au dossier `/root` nécessite des permissions spécifiques, car c'est le répertoire personnel de l'utilisateur `root`. On ne peut pas non plus y accéder en utilisant la commande `sudo`(qui permet d'élever ses droits au "rang" de super utilisateur le temps d'une commande), car `cd`est une commande intégrée au shell et non pas une commande que `sudo` peut exécuter (celles-ci sont dans le dossier `/sbin`).
+
+Une fois placé dans un dossier, on peut créer des fichiers avec la commande `touch` et des dossiers avec la commande `mkdir`. Pour la suppression des fichiers, il faudra utiliser la commande `rm` (exemple: `rm Dossier1/Fichier1`). Grâce à l'option `-r`, on peut utiliser la commande `rm`̀ pour supprimer un dossier (et son contenu) en une seule commande (exemple: `rm Dossier2`).
 
 ### Commandes importantes
 
-1.  On peut afficher l'heure avec la commande `date +%R`. La commande time quant à elle sert à calculer le temps d'exécution d'une commande passée en paramètre
-2.  Les fichiers commençant par un point sont les fichiers cachés par le système que l'on peut voir grâce à la commande `la`
-3.  Le programme ls se trouve dans `/bin/ls` que l'on trouve grâce à la commande `which ls`
-4.  La commande `ll` est un alias de la commande `ls -alF` qui permet d'afficher tous les fichiers y compris les fichiers cachés dans un format long c'est à dire avec les détails de ces fichiers.
-5.  La commande `ls /bin` permet d'afficher la listes des fichiers du dossier /bin
-6.  La commande `ls ..` permet de lister les fichiers du répertoire parent
-7.  La commande `pwd` permet d'afficher le répertoire courant complet
-8.  La commande `echo 'yo' > plop` permet d'écrire 'yo' et de stocker le résultat dans le fichier plop. L'exécution de cete commande une seconde fois va réécrire le fichier plop
-9.  La commande `echo 'yo' >> plop` permet d'aller écrire le mot 'yo' à la suite de la fichier plop avec un saut à la ligne
-10. La commande 'file' permet d'obtenir la type du fichier ainsi que son encodage sans tenir compte de l'extension mais bien du contenu de ce fichier
-11. Après avoir créé un lien titi vers le fichier toto, on constate que lorsque l'on modifie toto, titi est bien mis à jour. En revanche, lorsque l'on supprime toto, titi reste présent avec son contenu
-12. Les modifications se passent correctement comme pour la question précédente, en revanche avec l'option -s, le contneu tutu est supprimé lorsque l'on supprime le fichier titi
-13. Lors de l'affichage d'un fichier très long comme `/var/log/syslog`, on peut interrompre le défilement avec CTRL+S et le reprendre avec CTRL+Q
-14. Pour les 5 première lignes : 'head -n 5 /var/log/syslog', les 15 dernières : 'tail -n 5 /var/log/syslog'. Lignes 10 à 20 : 'head -n 5 /var/log/syslog | tail -n 10'
-15. {{ dmesg | less }}
-16. Le fichier `/etc/passwd` contient les informations sur les utilisateurs (nom, uid, guid, home, type de bash, ...) {{ man passwd }}
-17. {{ cat /etc/passwd | sort -r | cut -d ":" -f 1 }}
+Afin de récupérer l'heure actuelle, on utilise la commande `date`. Si l'on ne veut récupérer que l'heure, il suffit d'utiliser les bons arguments (`date +%R`). La commande time ne sert pas à afficher l'heure actuelle, mais à calculer le temps d'exécution d'une commande passée en paramètre !
 
+La commande `ls` permet de lister les fichiers présents dans un répertoire, elle est située dans `/bin/ls`, si l'on en croit le résultat de la commande `which ls`. La commande `la`permet de faire la même chose, mais affiche également les fichiers cachés sur le système (fichiers commençant par un point). Alternativement, on peut utiliser la commande `ll` qui est un alias de la commande `ls` avec les arguments ` -alF`, qui permet d'afficher tous les fichiers y compris les fichiers cachés, mais dans un format long, c'est à dire avec les détails de ces fichiers. On peut bien évidemment utiliser cette commande pour lister les fichiers d'un répertoire (exemple : `ls /bin`) ou du répertoire parent à celui où l'on se trouve (`ls ..`). A ce propos, on peut utiliser la commande `pwd` pour afficher le chemin complet vers le répertoire courant.
+
+On peut utiliser le signe `>` pour écrire dans un fichier, entre autres.  On peut donc, par exemple, taper la commande `echo 'yo' > plop` pour écrire 'yo' et le stocker dans le fichier `plop`.  Si l'on répète l'opération, on écrase le contenu du fichier à chaque fois et on réécrit 'yo'. Si l'on souhaite ajouter 'yo' à la suite du fichier, sans l'écraser, il faut utiliser la commande comme ceci : `echo 'yo' >> plop`.
+
+En parlant de fichiers, la commande 'file', bien utile, permet d'obtenir le type d'un fichier ainsi que son encodage. Elle ne tient pas compte de l'extension mais bien du contenu de ce fichier !
+
+Parlons liens, maintenant. On peut créer un lien "simple" vers un fichier avec la commande `ln`. On constate que lorsque l'on modifie le fichier "source", le fichier "lien" est bien mis à jour. En revanche, lorsque l'on supprime la source, le lien reste présent avec son contenu. Si l'on créé un lien symbolique avec la même commande et l'option `-s`, le comportement est différent lors de la suppression : le contenu du lien est supprimé lorsque l'on supprime le fichier "source".
+
+Passons à l'affiche du contenu d'un fichier. Lors de l'affichage d'un fichier très long( comme `/var/log/syslog` par exemple), on peut interrompre le défilement avec CTRL+S et le reprendre avec CTRL+Q. On peut également sélectionner les lignes que l'on veut afficher. Voici quelques exemples :
+
+ - 5 première lignes : 'head -n 5 /var/log/syslog'
+ - 15 dernières lignes : 'tail -n 5 /var/log/syslog'.
+ - Lignes 10 à 20 : 'head -n 5 /var/log/syslog | tail -n 10'
+
+Le fichier `/etc/passwd` contient les informations sur les utilisateurs (nom, uid, guid, home, type de bash, ...). On peut afficher la page du manuel correspondant à ce fichier avec `man passwd`. La commande suivante permet d'afficher seulement la première colonne de ce fichier, triée par ordre alphabétique inverse : `cat /etc/passwd | sort -r | cut -d ":" -f 1`
 
 ### Exercice 4
 
-3. La commande source .bashrc passe bien l'invité de commande en vert
-4. `PS1='${debian_chroot:+($debian_chroot)}[\033[01;31m]\t[\033[00m]-[\033[01;32m]\u@\h[\033$[\033[00m]:[\033[01;36m]\w[\033[00m]$ '
+En suivant les instructions données, l'invite de commande passe bien en vert après la commande `source .bashrc` passe bien l'invité de commande en vert
 
-
-
-
-
-
+Pour afficher l’heure est en violet et entre crochets, et le chemin du dossier courant en cyan, on modifie les lignes de mise en forme comme suit `PS1='${debian_chroot:+($debian_chroot)}[\033[01;31m]\t[\033[00m]-[\033[01;32m]\u@\h[\033$[\033[00m]:[\033[01;36m]\w[\033[00m]$`
