@@ -39,9 +39,14 @@
 13. Lors de l'affichage d'un fichier très long comme `/var/log/syslog`, on peut interrompre le défilement avec CTRL+S et le reprendre avec CTRL+Q
 14. Pour les 5 première lignes : 'head -n 5 /var/log/syslog', les 15 dernières : 'tail -n 5 /var/log/syslog'. Lignes 10 à 20 : 'head -n 5 /var/log/syslog | tail -n 10'
 15. {{ dmesg | less }}
-16. Le fichier `/etc/passwd` contient les informations sur les utilisateurs (nom, uid, guid, home, type de bash, ...) {{ man ? }}
+16. Le fichier `/etc/passwd` contient les informations sur les utilisateurs (nom, uid, guid, home, type de bash, ...) {{ man passwd }}
 17. {{ cat /etc/passwd | sort -r | cut -d ":" -f 1 }}
 
+
+### Exercice 4
+
+3. La commande source .bashrc passe bien l'invité de commande en vert
+4. `PS1='${debian_chroot:+($debian_chroot)}[\033[01;31m]\t[\033[00m]-[\033[01;32m]\u@\h[\033$[\033[00m]:[\033[01;36m]\w[\033[00m]$ '
 
 
 
